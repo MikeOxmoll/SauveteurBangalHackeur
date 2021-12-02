@@ -83,7 +83,7 @@
    // gère l'accueil
 	function accueil() 
 	{
-
+		
 		$controle = 'accueil';
 		$action = 'home';
 		
