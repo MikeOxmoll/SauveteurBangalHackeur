@@ -35,14 +35,14 @@
                         <input type="password" name="mdp" value="<?php echo $mdp; ?>" placeholder="Mot de passe" class="login__input" id="password">
                         <i class='bx bxs-show login__togglePassword' id="toggle-password"></i>
                     </div>
-                    <div class="login__box">
+                    <!--<div class="login__box">
                         <i class='bx bxs-business login__icon' ></i>
                         <input type="text" name="nomE" value="<?php echo $nomE; ?>" placeholder="Nom Entreprise" class="login__input">
                     </div>
                     <div class="login__box">
                         <i class='bx bxs-business login__icon' ></i>
                         <input type="text" name="adresseE" value="<?php echo $adresseE; ?>" placeholder="Adresse Entreprise" class="login__input">
-                    </div>
+                    </div> -->
                     <!-- SIGN IN -->
                     <input type="submit" value="S'inscrire" class="button login__button"></input>
                     <!-- <p style="color: red;"><?php echo $msg; ?></p> -->
