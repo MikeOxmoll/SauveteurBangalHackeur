@@ -83,12 +83,6 @@
    // gère l'accueil
 	function accueil() 
 	{
-      
-      if (!isset($_SESSION['vehicules']) ||
-          isset($_GET['param']) && $_GET['param'] == 'vehicule-home') {
-         $url = './index.php?controle=vehicule&action=show';
-         header('Location:' . $url);
-      }
 
 		$controle = 'accueil';
 		$action = 'home';
