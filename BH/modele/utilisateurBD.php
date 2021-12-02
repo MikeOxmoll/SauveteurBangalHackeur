@@ -65,18 +65,17 @@
     }
 
     // insère un nouveau client dans la base de donnée.
-    function inscr_BD($nom, $pseudo, $email, $mdp, $idE)
+    function inscr_BD($nom, $pseudo, $email, $mdp)
     {
         require('./modele/connectBD.php');
-        $sql = "INSERT INTO `client` (nom, pseudo, email, mdp, idE)
-                 VALUES (:nom, :pseudo, :email, :mdp, :idE)";
+        $sql = "INSERT INTO `client` (nom, pseudo, email, mdp)
+                 VALUES (:nom, :pseudo, :email, :mdp)";
         try {
             $commande = $pdo->prepare($sql);
             $commande->bindParam(':nom', $nom);
             $commande->bindParam(':pseudo', $pseudo);
             $commande->bindParam(':email', $email);
             $commande->bindParam(':mdp', $mdp);
-            $commande->bindParam(':idE', $idE);
             $bool = $commande->execute();
 
             if ($bool) return true;
@@ -86,56 +85,6 @@
         catch (PDOException $e) {
             echo utf8_encode('Echec de insert into : ' . $e->getMessage() . '.\n');
             die();
-        }
-    }
-
-    // insère une nouvelle entreprise dans la base de donnée.
-    function create_entreprise_BD($nom, $adresse) 
-    {
-        require('./modele/connectBD.php');
-        $sql = "INSERT INTO `entreprise` (nom, adresse)
-                VALUES (:nom, :adresse)";
-        try {
-            $commande = $pdo->prepare($sql);
-            $commande->bindParam(':nom', $nom);
-            $commande->bindParam(':adresse', $adresse);
-            $bool = $commande->execute();
-
-            if ($bool) return true;
-            else return false;
-        }
-
-        catch (PDOException $e) {
-            echo utf8_encode('Echec de insert into : ' . $e->getMessage() . '.\n');
-            die();
-        }
-    }
-
-    // renvoie l'id de l'entreprise ayant le nom passé en paramètre
-    function getId_entreprise_BD($nom)
-    {
-        require('./modele/connectBD.php');
-        $sql = "SELECT id FROM `entreprise` WHERE nom = :nom";
-        try {
-            $commande = $pdo->prepare($sql);
-            $commande->bindParam(':nom', $nom);
-            $bool = $commande->execute();
-
-            if ($bool) {
-                $Resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
-                // var_dump($Resultat[0]); die();
-            }
-        }
-        catch (PDOException $e) {
-            echo utf8_encode('Echec de insert into : ' . $e->getMessage() . '.\n');
-            die();
-        }
-
-        if (count($Resultat)==0) {
-            return array(); // retourne un tableau vide
-        }
-        else {
-            return $Resultat[0];
         }
     }
 
