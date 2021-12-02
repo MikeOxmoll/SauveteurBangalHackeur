@@ -2,13 +2,13 @@
     <!-- LOGO -->
     <a href="./index.php?controle=utilisateur&action=accueil&param=vehicule-home" class="nav__logo">
         <img src="./vue/image/logo.png" alt="logo" class="nav__logo-img">
-        <p class="nav__logo-title"><?php echo isset($_SESSION['profil']) ? $_SESSION['profil']['pseudo'] : 'LOGO'; ?></p>
+        <p class="nav__logo-title"><?php echo isset($_SESSION['profil']) ? $_SESSION['profil']['pseudo'] : ''; ?></p>
     </a>
     <!-- MENU -->
     <div class="nav__menu" id="nav-menu">
         <ul class="nav__list">
             <li class="nav__item">
-                <a href="./index.php?controle=utilisateur&action=accueil&param=vehicule-home" class="nav__link">Home</a>
+                <a href="./index.php?controle=utilisateur&action=accueil&param=vehicule-home" class="nav__link">Accueil</a>
             </li>
             <?php 
                 if ($controle == 'accueil') {
