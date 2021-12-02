@@ -40,8 +40,6 @@
       $pseudo = isset($_POST['pseudo']) ? test_input($_POST['pseudo']) : '';
       $email = isset($_POST['email']) ? test_input($_POST['email']) : '';
       $mdp = isset($_POST['mdp']) ? test_input($_POST['mdp']) : '';
-      $nomE = isset($_POST['nomE']) ? test_input($_POST['nomE']) : '';
-      $adresseE = isset($_POST['adresseE']) ? test_input($_POST['adresseE']) : '';
       $msg = '';
 
 
@@ -52,7 +50,7 @@
       else {
          require('./modele/utilisateurBD.php');
 
-         if (!verif_inscr_input($nom, $pseudo, $email, $mdp, $nomE, $adresseE, $mdp_c) || 
+         if (!verif_inscr_input($nom, $pseudo, $email, $mdp, $mdp_c) || 
              !verif_inscr_BD_valide_email($email) || 
              !verif_inscr_BD_valide_pseudo($pseudo)) {
             $msg = 'Erreur de saisie, Reéssayez !';
@@ -60,14 +58,7 @@
             require('./vue/layout.tpl');
          }
          else {
-            // Si l'entreprise n'existe pas dans la base de donné, alors on la crée.
-            if (count(getId_entreprise_BD($nomE)) == 0) 
-               create_entreprise_BD($nomE, $adresseE);
-
-            $idE = getId_entreprise_BD($nomE)['id'];
-
-            inscr_BD($nom, $pseudo, $email, $mdp_c, $idE);
-
+            
             // inscription réussit, authentification automatique.
             if (verif_ident_client_BD($email, $mdp_c, $Profil)) {
                // die("OK tous c'est bien passé.");
@@ -117,17 +108,15 @@
 
    // Vérifie si tous les champs du formulaire d'inscription sont
    // correctement renseignés
-	function verif_inscr_input($nom, $pseudo, $email , $mdp, $nomE, $adresseE, &$mdp_c='') : bool
+	function verif_inscr_input($nom, $pseudo, $email , $mdp, &$mdp_c='') : bool
    {
-      if (empty($nom) || empty($pseudo) || empty($mdp) || empty($email) || empty($nomE) || empty($adresseE))
+      if (empty($nom) || empty($pseudo) || empty($email) || empty($mdp) )
          return false;
       if (!verif_alpha($nom))
          return false;
       if (!verif_input_size($pseudo, 3) || !verif_alpha($pseudo[0]) || !verif_alpha_num($pseudo))
          return false;
       if (!verif_email($email))
-         return false;
-      if (!verif_alpha_num($nomE) || !verif_alpha_num($adresseE))
          return false;
       $mdp_c = crypt($mdp, '$6$rounds=5000$anexamplestringforsalt$');
       return true;
