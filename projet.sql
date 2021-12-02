@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `client`
 --
 
-CREATE TABLE `cliennt` (
+CREATE TABLE `client` (
   `id` int(11) UNSIGNED NOT NULL,
   `nom` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `pseudo` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
