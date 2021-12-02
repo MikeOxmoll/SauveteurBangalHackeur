@@ -11,7 +11,7 @@
     <div class="login__container container">
         <div class="login__content">
             <div class="login__img">
-                <img src="./vue/img/login-img.svg" alt="login">
+                <img src="./vue/image/login-img.svg" alt="login">
             </div>
             <!-- FORM -->
             <div class="login__form">
