@@ -59,7 +59,7 @@ function get_demandeSautage(){
 
 }
 
-function get_demandeSautage(){
+function get_demandePersonne(){
     require('./modele/connectBD.php');
     try {
         $sql = "SELECT * FROM `demandePersonne`";
@@ -78,3 +78,46 @@ function get_demandeSautage(){
     }
 
 }
+
+---
+
+    
+    function getSauvetages(){
+         require('./modele/connectBD.php');
+        try {
+            $sql = "SELECT * FROM `sauvetage`";
+            $commande = $pdo->prepare($sql);
+            $bool = $commande->execute();
+            if ($bool) {
+                $Resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
+                // var_dump($Resultat); die();
+            }
+            return $Resultat;
+    
+        }
+        catch (PDOException $e) {
+            echo utf8_encode('Echec de select : ' . $e->getMessage() . '\n');
+            die();
+        }
+    }
+    
+    function getDecorations(){
+        require('./modele/connectBD.php');
+        $Resultat = array();
+       try {
+           $sql = "SELECT * FROM `decoration`";
+           $commande = $pdo->prepare($sql);
+           $bool = $commande->execute();
+           if ($bool) {
+               $Resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
+               // var_dump($Resultat); die();
+           }
+           
+    
+       }
+       catch (PDOException $e) {
+           echo utf8_encode('Echec de select : ' . $e->getMessage() . '\n');
+           die();
+       }
+       return $Resultat;
+    }
