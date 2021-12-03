@@ -28,7 +28,7 @@
                     echo '
 					<li class="nav__item">
                         <a href="./index.php?controle=utilisateur&action=ajoutSauveteur" class="nav__link">Ajout</a>
-                    </li>';
+                    </li>
                     <li class="nav__item">
                         <a href="./index.php?controle=utilisateur&action=inscr" class="nav__link">Inscription</a>
                     </li>

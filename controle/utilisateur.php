@@ -97,6 +97,10 @@
 		
 		require ('./vue/layout.tpl');  
 	}
+	
+	function listeDemandes()
+	{
+	}
 
    // Vérifie si tous les champs du formulaire d'authentification sont
    // correctement renseignés
