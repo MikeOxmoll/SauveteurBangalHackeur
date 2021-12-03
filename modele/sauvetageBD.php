@@ -38,3 +38,43 @@ function inscr_demandeSauvetage_bd($idSauvetage, $idUser){
         }
 
 }
+
+function get_demandeSautage(){
+    require('./modele/connectBD.php');
+    try {
+        $sql = "SELECT * FROM `demandeSauvetage`";
+        $commande = $pdo->prepare($sql);
+        $bool = $commande->execute();
+        if ($bool) {
+            $Resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
+            // var_dump($Resultat); die();
+        }
+        return $Resultat;
+
+    }
+    catch (PDOException $e) {
+        echo utf8_encode('Echec de select : ' . $e->getMessage() . '\n');
+        die();
+    }
+
+}
+
+function get_demandeSautage(){
+    require('./modele/connectBD.php');
+    try {
+        $sql = "SELECT * FROM `demandePersonne`";
+        $commande = $pdo->prepare($sql);
+        $bool = $commande->execute();
+        if ($bool) {
+            $Resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
+            // var_dump($Resultat); die();
+        }
+        return $Resultat;
+
+    }
+    catch (PDOException $e) {
+        echo utf8_encode('Echec de select : ' . $e->getMessage() . '\n');
+        die();
+    }
+
+}
