@@ -96,6 +96,42 @@ input, button {
   outline: none;
 }
 
+.contenuePage {
+  border: 2px solid black;
+  padding: 5%;
+}
+
+.contenuePage .entete{
+  display: flex;
+  width: 100%;
+  margin-bottom: 5%;
+}
+
+.contenuePage .entete h1{
+  text-align: center;
+  width: 90%;
+}
+
+.contenuePage .entete button{
+  float: left;
+  width: 10%;
+}
+
+.contenuePage .description{
+  display: flex;
+}
+
+.contenuePage .titre-desc{
+  width: 50%;
+  margin-right: 2%;
+}
+
+
+.contenuePage .img img{
+  max-width: 100%;
+  max-height: 100%;
+}
+
 @media screen and (min-width: 767px) {
   body {
     margin: 0;

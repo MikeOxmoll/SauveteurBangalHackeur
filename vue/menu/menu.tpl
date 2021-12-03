@@ -1,7 +1,7 @@
 <nav class="nav container">
     <!-- LOGO -->
     <a href="./index.php?controle=utilisateur&action=accueil" class="nav__logo">
-        <img src="./vue/image/logo.png" alt="logo" class="nav__logo-img">
+        <img src="./vue/image/logo2.png" alt="logo" class="nav__logo-img">
         <p class="nav__logo-title"><?php echo isset($_SESSION['profil']) ? $_SESSION['profil']['pseudo'] : ''; ?></p>
     </a>
     <!-- MENU -->

@@ -117,6 +117,12 @@
       
 	}
 	
+	function sauveteurs()
+	{
+		 $controle = "utilisateur"; $action = "sauveteurs";
+         require('./vue/layout.tpl');
+	}
+	
 	function listeDemandes()
 	{
 	}
