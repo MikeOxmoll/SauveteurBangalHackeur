@@ -26,28 +26,30 @@
                 }
                 if (!isset($_SESSION['profil'])) {
                     echo '
+					<li class="nav__item">
+                        <a href="./index.php?controle=utilisateur&action=ajoutSauveteur" class="nav__link">Ajout</a>
+                    </li>';
                     <li class="nav__item">
                         <a href="./index.php?controle=utilisateur&action=inscr" class="nav__link">Inscription</a>
                     </li>
                     <li class="nav__item">
                         <a href="./index.php?controle=utilisateur&action=ident" class="nav__link">Connexion</a>
                     </li>';
+		
 
                 }else{
-                    if ($_SESSION['profil']['role'] == 'client') {
+                    if ($_SESSION['profil']['role'] == 'user') {
                         echo'
                         <li class="nav__item">
                             <a href="./index.php?controle=vehicule&action=get" class="nav__link">Voitures</a>
                         </li>';
                     }
-                    if ($_SESSION['profil']['role'] == 'loueur') {
+                    if ($_SESSION['profil']['role'] == 'admin') {
                         echo'
                         <li class="nav__item">
-                            <a href="./index.php?controle=vehicule&action=get&param=vehicule-stock" class="nav__link">Stock</a>
+                            <a href="./index.php?controle=utilisateur&action=listeDemandes" class="nav__link">Demandes</a>
                         </li>
-                        <li class="nav__item">
-                            <a href="./index.php?controle=vehicule&action=get&param=vehicule-rent" class="nav__link">Locations</a>
-                        </li>';
+                   
                     }
                     echo'
                     <li class="nav__item">

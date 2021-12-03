@@ -84,10 +84,18 @@
 	function accueil() 
 	{
 		
-		$controle = 'accueil';
-		$action = 'home';
+		$controle = 'utilisateur';
+		$action = 'accueil';
 		
 		require ('./vue/layout.tpl');   
+	}
+	
+	function ajoutSauveteur()
+	{
+		$controle = 'utilisateur';
+		$action = 'ajoutSauveteur';
+		
+		require ('./vue/layout.tpl');  
 	}
 
    // Vérifie si tous les champs du formulaire d'authentification sont
