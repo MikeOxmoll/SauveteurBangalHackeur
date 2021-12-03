@@ -100,36 +100,21 @@
 	  $carriere = isset($_POST['carriere ']) ? test_input($_POST['carriere ']) : '';
 	  $decorations = isset($_POST['decorations']) ? test_input($_POST['decorations']) : '';
       $sauvetage = isset($_POST['sauvetage']) ? test_input($_POST['sauvetage']) : '';
-      $msg = '';
 
-
-      if (count($_POST)==0) {
+      if (count($_POST)==0 || empty($nom) || empty($prenom)) {
          $controle = "utilisateur"; $action = "ajoutSauveteur";
          require('./vue/layout.tpl');
       }
       else {
-         require('./modele/utilisateurBD.php');
-
-         if (!verif_inscr_input($nom, $pseudo, $email, $mdp, $mdp_c) || 
-             !verif_inscr_BD_valide_email($email) || 
-             !verif_inscr_BD_valide_pseudo($pseudo)) {
-            $msg = 'Erreur de saisie, Reéssayez !';
-            $controle = "utilisateur"; $action = "ajoutSauveteur";
-            require('./vue/layout.tpl');
-         }
-         else {
+        require('./modele/utilisateurBD.php');
             
-            // inscription réussit, authentification automatique.
-            if (verif_ident_client_BD($email, $mdp_c, $Profil)) {
-               // die("OK tous c'est bien passé.");
-               $_SESSION['profil'] = $Profil;
-               $url = './index.php?controle=utilisateur&action=accueil';
-               header('Location:' . $url);
-            }
-            // inscription échoué : non implémenté
-            die("Quelque chos n'a pas fonctionnée.");
-         }
+        ajoutSauveteurBD($nom, $prenom, $etatcivil, $donneesgenea, $carriere, $decorations, $sauvetage);
+		$url = './index.php?controle=utilisateur&action=sauveteurs';
+        header('Location:' . $url);
+            
+           
       }
+      
 	}
 	
 	function listeDemandes()
