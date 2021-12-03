@@ -25,9 +25,7 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="footer section">
-        <?php if ($action == 'accueil') require('./vue/footer/footer.tpl'); ?>
-    </footer>
+  
 
     <!-- SCROLL UP -->
 

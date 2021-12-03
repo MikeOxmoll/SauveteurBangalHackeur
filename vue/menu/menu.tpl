@@ -17,8 +17,12 @@
                 if (!isset($_SESSION['profil'])) {
                     echo '
 					<li class="nav__item">
+                        <a href="./index.php?controle=utilisateur&action=sauveteurs" class="nav__link">Sauveteurs</a>
+                    </li>
+					<li class="nav__item">
                         <a href="./index.php?controle=utilisateur&action=ajoutSauveteur" class="nav__link">Ajout</a>
                     </li>
+					
                     <li class="nav__item">
                         <a href="./index.php?controle=utilisateur&action=inscr" class="nav__link">Inscription</a>
                     </li>
