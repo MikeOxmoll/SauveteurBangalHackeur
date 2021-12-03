@@ -1,31 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 4.5.4.1
--- http://www.phpmyadmin.net
---
--- Client :  localhost
--- Généré le :  Lun 08 Novembre 2021 à 01:39
--- Version du serveur :  5.7.11
--- Version de PHP :  7.0.3
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de données :  `sdd-bh_projet`
---
-
--- --------------------------------------------------------
-
---
--- Structure de la table `client`
---
-CREATE OR REPLACE TABLE Personne(
+CREATE TABLE Personne(
    IdPersonne INT,
    Nom VARCHAR(50),
    Prenom VARCHAR(50),
@@ -36,20 +9,20 @@ CREATE OR REPLACE TABLE Personne(
    PRIMARY KEY(IdPersonne)
 );
 
-CREATE OR REPLACE TABLE Sauve(
+CREATE TABLE Sauve(
    IdPersonne INT,
    PRIMARY KEY(IdPersonne),
    FOREIGN KEY(IdPersonne) REFERENCES Personne(IdPersonne)
 );
 
-CREATE OR REPLACE TABLE Sauveteur(
+CREATE TABLE Sauveteur(
    idSauveteur INT,
    IdPersonne INT NOT NULL,
    PRIMARY KEY(idSauveteur),
    FOREIGN KEY(IdPersonne) REFERENCES Personne(IdPersonne)
 );
 
-CREATE OR REPLACE TABLE Utilisateur(
+CREATE TABLE Utilisateur(
    IdUser INT,
    pseudo VARCHAR(50) NOT NULL,
    Nom VARCHAR(50),
@@ -60,31 +33,31 @@ CREATE OR REPLACE TABLE Utilisateur(
    UNIQUE(email)
 );
 
-CREATE OR REPLACE TABLE Sauvetage(
+CREATE TABLE Sauvetage(
    idSauvetage VARCHAR(50),
    DateSautage DATE,
    Description TEXT,
    PRIMARY KEY(idSauvetage)
 );
 
-CREATE OR REPLACE TABLE Bateau(
+CREATE TABLE Bateau(
    idBateau INT,
    Station VARCHAR(50),
    PRIMARY KEY(idBateau)
 );
 
-CREATE OR REPLACE TABLE Decoration(
+CREATE TABLE Decoration(
    Intitule VARCHAR(50),
    PRIMARY KEY(Intitule)
 );
 
-CREATE OR REPLACE TABLE Admin(
+CREATE TABLE Admin(
    IdUser INT,
    PRIMARY KEY(IdUser),
    FOREIGN KEY(IdUser) REFERENCES Utilisateur(IdUser)
 );
 
-CREATE OR REPLACE TABLE decorer(
+CREATE TABLE decorer(
    idSauveteur INT,
    Intitule VARCHAR(50),
    PRIMARY KEY(idSauveteur, Intitule),
@@ -92,7 +65,7 @@ CREATE OR REPLACE TABLE decorer(
    FOREIGN KEY(Intitule) REFERENCES Decoration(Intitule)
 );
 
-CREATE OR REPLACE TABLE assite(
+CREATE TABLE assite(
    idSauveteur INT,
    idSauvetage VARCHAR(50),
    PRIMARY KEY(idSauveteur, idSauvetage),
@@ -100,7 +73,7 @@ CREATE OR REPLACE TABLE assite(
    FOREIGN KEY(idSauvetage) REFERENCES Sauvetage(idSauvetage)
 );
 
-CREATE OR REPLACE TABLE concerne(
+CREATE TABLE concerne(
    IdPersonne INT,
    idSauvetage VARCHAR(50),
    PRIMARY KEY(IdPersonne, idSauvetage),
@@ -108,7 +81,7 @@ CREATE OR REPLACE TABLE concerne(
    FOREIGN KEY(idSauvetage) REFERENCES Sauvetage(idSauvetage)
 );
 
-CREATE OR REPLACE TABLE demandeSauvetage(
+CREATE TABLE demandeSauvetage(
    IdUser INT,
    idSauvetage VARCHAR(50),
    PRIMARY KEY(IdUser, idSauvetage),
@@ -116,7 +89,7 @@ CREATE OR REPLACE TABLE demandeSauvetage(
    FOREIGN KEY(idSauvetage) REFERENCES Sauvetage(idSauvetage)
 );
 
-CREATE OR REPLACE TABLE bateauSauvetage(
+CREATE TABLE bateauSauvetage(
    idSauvetage VARCHAR(50),
    idBateau INT,
    PRIMARY KEY(idSauvetage, idBateau),
@@ -124,7 +97,7 @@ CREATE OR REPLACE TABLE bateauSauvetage(
    FOREIGN KEY(idBateau) REFERENCES Bateau(idBateau)
 );
 
-CREATE OR REPLACE TABLE demandePersonne(
+CREATE TABLE demandePersonne(
    IdPersonne INT,
    IdUser INT,
    PRIMARY KEY(IdPersonne, IdUser),
