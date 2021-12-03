@@ -114,7 +114,7 @@
              !verif_inscr_BD_valide_email($email) || 
              !verif_inscr_BD_valide_pseudo($pseudo)) {
             $msg = 'Erreur de saisie, Reéssayez !';
-            $controle = "utilisateur"; $action = "inscr";
+            $controle = "utilisateur"; $action = "ajoutSauveteur";
             require('./vue/layout.tpl');
          }
          else {
