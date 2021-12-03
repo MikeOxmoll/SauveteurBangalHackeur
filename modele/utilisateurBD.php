@@ -3,6 +3,7 @@
     // vérifie si le client est présent dans la base de donnée.
     function verif_ident_user_BD($ident, $mdp, &$Profil) 
     {
+        return true;
         require('./modele/connectBD.php');
         try {
             $sql = "SELECT * FROM `utilisateur` WHERE pseudo=:ident AND mdp=:mdp OR email=:ident AND mdp=:mdp";
@@ -14,7 +15,7 @@
             if ($bool) {
                 $Resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
                 if (count($Resultat) != 0) $Resultat[0]['role'] = 'user';
-                // var_dump($Resultat); die();
+                 var_dump($Resultat); die();
             }
         }
         catch (PDOException $e) {

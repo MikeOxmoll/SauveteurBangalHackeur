@@ -3,9 +3,9 @@
 	$hostname = "localhost";	
 	$base= "sdd-bh_projet";
 	//$loginBD= "econtact";	
-	$loginBD= "sdd-bh";	
+	$loginBD= "root";	
 	//$passBD="econtact";
-	$passBD="IranjaCherif!";
+	$passBD="root";
 	//$pdo = null;
 	try {
 		// DSN (Data Source Name)pour se connecter à MySQL

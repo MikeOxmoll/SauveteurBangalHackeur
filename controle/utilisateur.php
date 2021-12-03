@@ -15,8 +15,8 @@
 		else{
 			require('./modele/utilisateurBD.php');
 			if (!verif_ident_input($ident, $mdp, $mdp_c) ||
-				!verif_ident_user_BD_BD($ident, $mdp_c, $Profil) &&
-				!verif_ident_admin_BD($ident, $mdp_c, $Profil)){
+				!verif_ident_user_BD($ident, $mdp_c, $Profil) /*&&
+				!verif_ident_admin_BD($ident, $mdp_c, $Profil)*/){
 				$msg = 'Identifiant ou mot de passe incorrect';
 				$controle = "utilisateur"; $action = "ident";
 				require('./vue/layout.tpl');
@@ -183,7 +183,7 @@
    {
 		if (empty($ident) || empty($mdp))
 			return false;
-		$mdp_c = crypt($mdp, '$6$rounds=5000$anexamplestringforsalt$');
+		$mdp_c = $mdp;//crypt($mdp, '$6$rounds=5000$anexamplestringforsalt$');
 		return true;
 	}
 
@@ -199,7 +199,8 @@
          return false;
       if (!verif_email($email))
          return false;
-      $mdp_c = crypt($mdp, '$6$rounds=5000$anexamplestringforsalt$');
+      $mdp_c = $mdp; //= crypt($mdp, '$6$rounds=5000$anexamplestringforsalt$');
+      
       return true;
    }
 
