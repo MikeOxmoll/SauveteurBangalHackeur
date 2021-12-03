@@ -22,7 +22,9 @@
 					<li class="nav__item">
                         <a href="./index.php?controle=utilisateur&action=ajoutSauveteur" class="nav__link">Ajout</a>
                     </li>
-					
+					<li class="nav__item">
+                            <a href="./index.php?controle=utilisateur&action=listeDemandes" class="nav__link">Demandes</a>
+                        </li>
                     <li class="nav__item">
                         <a href="./index.php?controle=utilisateur&action=inscr" class="nav__link">Inscription</a>
                     </li>
@@ -44,9 +46,7 @@
                 if ($_SESSION['profil']['role'] == 'admin') {
                     echo'
 					
-                        <li class="nav__item">
-                            <a href="./index.php?controle=utilisateur&action=listeDemandes" class="nav__link">Demandes</a>
-                        </li>';
+                        ';
                    
                 }
                 echo'
