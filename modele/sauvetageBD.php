@@ -79,9 +79,6 @@ function get_demandePersonne(){
 
 }
 
----
-
-    
     function getSauvetages(){
          require('./modele/connectBD.php');
         try {
