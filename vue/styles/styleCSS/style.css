@@ -1291,12 +1291,6 @@ input, button {
   background: none;
 }
 
-.box textarea[type="text"]{
-	height: 100px;
-	width: 300px;
-
-}
-
 .login__input::-webkit-input-placeholder {
   font-family: "Poppins", sans-serif;
   color: var(--text-color-light);
