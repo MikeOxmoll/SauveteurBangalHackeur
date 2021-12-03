@@ -93,7 +93,7 @@
 	
 	function ajoutSauveteur()
 	{
-		
+		require('./modele/sauvetageBD.php');
 		if (isset($_SESSION['profil'])) {
 			
 		// Définition des variables
@@ -102,8 +102,11 @@
       $etatcivil = isset($_POST['etatcivil']) ? test_input($_POST['etatcivil']) : '';
 	  $donneesgenea = isset($_POST['donneesgenea']) ? test_input($_POST['donneesgenea']) : '';
 	  $carriere = isset($_POST['carriere ']) ? test_input($_POST['carriere ']) : '';
-	  $decorations = isset($_POST['decorations']) ? test_input($_POST['decorations']) : '';
-      $sauvetage = isset($_POST['sauvetage']) ? test_input($_POST['sauvetage']) : '';
+	  //$decorations = isset($_POST['decorations']) ? test_input($_POST['decorations']) : '';
+      //$sauvetage = isset($_POST['sauvetage']) ? test_input($_POST['sauvetage']) : '';
+
+      $_SESSION['decorations'] = getDecorations();
+      $_SESSION['sauvetages'] = getSauvetages();
 
       if (count($_POST)==0 || empty($nom) || empty($prenom)) {
          $controle = "utilisateur"; $action = "ajoutSauveteur";
