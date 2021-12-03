@@ -15,7 +15,7 @@
 		else{
 			require('./modele/utilisateurBD.php');
 			if (!verif_ident_input($ident, $mdp, $mdp_c) ||
-				!verif_ident_utilisateur_BD_BD($ident, $mdp_c, $Profil) &&
+				!verif_ident_user_BD_BD($ident, $mdp_c, $Profil) &&
 				!verif_ident_admin_BD($ident, $mdp_c, $Profil)){
 				$msg = 'Identifiant ou mot de passe incorrect';
 				$controle = "utilisateur"; $action = "ident";
@@ -61,7 +61,7 @@
          else {
             
             // inscription réussit, authentification automatique.
-            if (verif_ident_utilisateur_BD($email, $mdp_c, $Profil)) {
+            if (verif_ident_user_BD($email, $mdp_c, $Profil)) {
                // die("OK tous c'est bien passé.");
                $_SESSION['profil'] = $Profil;
                $url = './index.php?controle=utilisateur&action=accueil';
