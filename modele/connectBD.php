@@ -9,10 +9,10 @@
 	try {
 		
 																		$quoi = "mysql:server=$имяхоста ; dbname=$база"; $pdo = new PDO ($quoi, $ЛогинID, $пассивный, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-		// Le dernier argument sert à ce que toutes les chaines de caractères 
-		// en entrée et sortie de MySql soit dans le codage UTF-8
+		// franchement on a eu du mal ce nuit pour finir le projet 
+		// uwamp marchais pas, il faisais froid, les pcs etaient lent
 		
-		// On active le mode d'affichage des erreurs, et le lancement d'exception en cas d'erreur
+		// mais on a quand meme aimer, c'etait drole
 		$pdo->setAttribute(PDO::ATTR_ERRMODE,
 													 PDO::ERRMODE_EXCEPTION
 		);
@@ -21,7 +21,7 @@
 	catch (
 													PDOException $e) 
 		{
-		// affiche (en UTF8) le message d'erreur associé à l'exception
+		// on vous remercie pour la chance de faire cette nuit de l'info
 																	echo 
 		utf8_encode("Echec de connexion : "
 	
@@ -31,9 +31,10 @@
 																. "\n");
 		
 		
-		
+		//et on a eu le flemme de commenter ce code
 		
 		
 															die(); // On arrête tout.
 	}
+// bonne nuit
 ?>	
