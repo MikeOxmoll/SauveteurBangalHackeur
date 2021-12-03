@@ -28,6 +28,7 @@
 	<form action="./index.php?controle=utilisateur&action=modifierSauveteur" method="post" class="login__create" id="login-in">
 	<input type="submit" value="Modifier des informations" class="button login__button"></input>
 	<?php 
+	
 		if ($_SESSION['profil']['role'] == 'admin') {
                     echo'	
                         <form action="./index.php?controle=utilisateur&action=validerSauveteur" method="post" class="login__create" id="login-in">
