@@ -27,7 +27,7 @@ Ces fonctions et les défraiements qui leur sont liés ont été définis dès l
     </div>
     <div class="liste-sauveteur">
       <h2>Membres fondateurs de la Société Humaine de Dunkerque :</h2>
-      <a href="#">Benjamin Morel</a>
+      <a href="./index.php?controle=utilisateur&action=pageSauveteur" method="post">Benjamin Morel</a>
       <a href="#">Benjamin Morel</a>
       <a href="#">Benjamin Morel</a>
       <a href="#">Benjamin Morel</a>
@@ -37,5 +37,13 @@ Ces fonctions et les défraiements qui leur sont liés ont été définis dès l
     </div>
 	<form action="./index.php?controle=utilisateur&action=ajoutSauveteur" method="post" class="login__create" id="login-in">
 	<input type="submit" value="Ajouter un sauveteur" class="button login__button"></input>
+	<?php 
+		if ($_SESSION['profil']['role'] == 'admin') {
+                    echo'	
+                        <form action="./index.php?controle=utilisateur&action=validerSauveteur" method="post" class="login__create" id="login-in">
+						<input type="submit" value="Valider la demande" class="button login__button"></input>';
+                   
+        }
+	?>
   </section>
 </section>

@@ -35,6 +35,7 @@
    // gère l'inscription d'un nouveau client
 	function inscr()
    {
+	   
       // Définition des variables
       $nom = isset($_POST['nom']) ? test_input($_POST['nom']) : '';
       $pseudo = isset($_POST['pseudo']) ? test_input($_POST['pseudo']) : '';
@@ -92,7 +93,10 @@
 	
 	function ajoutSauveteur()
 	{
-		 // Définition des variables
+		
+		if (isset($_SESSION['profil'])) {
+			
+		// Définition des variables
       $nom = isset($_POST['nom']) ? test_input($_POST['nom']) : '';
       $prenom = isset($_POST['prenom']) ? test_input($_POST['prenom']) : '';
       $etatcivil = isset($_POST['etatcivil']) ? test_input($_POST['etatcivil']) : '';
@@ -114,7 +118,42 @@
             
            
       }
-      
+		}else{
+			$url = './index.php?controle=utilisateur&action=ident';
+      header('Location:' . $url);
+		}
+	}
+	
+	function modifierSauveteur()
+	{
+		if (isset($_SESSION['profil'])) {
+			
+		// Définition des variables
+      $nom = isset($_POST['nom']) ? test_input($_POST['nom']) : '';
+      $prenom = isset($_POST['prenom']) ? test_input($_POST['prenom']) : '';
+      $etatcivil = isset($_POST['etatcivil']) ? test_input($_POST['etatcivil']) : '';
+	  $donneesgenea = isset($_POST['donneesgenea']) ? test_input($_POST['donneesgenea']) : '';
+	  $carriere = isset($_POST['carriere ']) ? test_input($_POST['carriere ']) : '';
+	  $decorations = isset($_POST['decorations']) ? test_input($_POST['decorations']) : '';
+      $sauvetage = isset($_POST['sauvetage']) ? test_input($_POST['sauvetage']) : '';
+
+      if (count($_POST)==0 || empty($nom) || empty($prenom)) {
+         $controle = "utilisateur"; $action = "ajoutSauveteur";
+         require('./vue/layout.tpl');
+      }
+      else {
+        require('./modele/utilisateurBD.php');
+            
+        modifierSauveteurBD($nom, $prenom, $etatcivil, $donneesgenea, $carriere, $decorations, $sauvetage);
+		$url = './index.php?controle=utilisateur&action=sauveteurs';
+        header('Location:' . $url);
+            
+           
+      }
+		}else{
+			$url = './index.php?controle=utilisateur&action=ident';
+      header('Location:' . $url);
+		}
 	}
 	
 	function sauveteurs()
@@ -123,8 +162,16 @@
          require('./vue/layout.tpl');
 	}
 	
+	function pageSauveteur()
+	{
+		$controle = "utilisateur"; $action = "pageSauveteur";
+        require('./vue/layout.tpl');
+	}
+	
 	function listeDemandes()
 	{
+		$controle = "utilisateur"; $action = "listeDemandes";
+        require('./vue/layout.tpl');
 	}
 
    // Vérifie si tous les champs du formulaire d'authentification sont
