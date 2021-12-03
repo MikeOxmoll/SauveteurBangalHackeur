@@ -1,7 +1,7 @@
 <?php
 	//$hostname = "vs-wamp";
 	$hostname = "localhost";	
-	$base= "projet";
+	$base= "sdd-bh_projet";
 	//$loginBD= "econtact";	
 	$loginBD= "root";	
 	//$passBD="econtact";
