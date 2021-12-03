@@ -12,17 +12,7 @@
             </li>
             <?php 
                 if ($controle == 'accueil') {
-                    echo '
-                    <!-- <li class="nav__item">
-                        <a href="#about" class="nav__link">About</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#trick" class="nav__link">Candy</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#new" class="nav__link">New</a>
-                    </li> -->
-                    ';
+                    echo '';
                 }
                 if (!isset($_SESSION['profil'])) {
                     echo '
@@ -48,7 +38,7 @@
                         echo'
                         <li class="nav__item">
                             <a href="./index.php?controle=utilisateur&action=listeDemandes" class="nav__link">Demandes</a>
-                        </li>
+                        </li>';
                    
                     }
                     echo'

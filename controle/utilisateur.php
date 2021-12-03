@@ -84,7 +84,7 @@
 	function accueil() 
 	{
 		
-		$controle = 'utilisateur';
+		$controle = 'accueil';
 		$action = 'accueil';
 		
 		require ('./vue/layout.tpl');   
@@ -92,10 +92,44 @@
 	
 	function ajoutSauveteur()
 	{
-		$controle = 'utilisateur';
-		$action = 'ajoutSauveteur';
-		
-		require ('./vue/layout.tpl');  
+		 // Définition des variables
+      $nom = isset($_POST['nom']) ? test_input($_POST['nom']) : '';
+      $prenom = isset($_POST['prenom']) ? test_input($_POST['prenom']) : '';
+      $etatcivil = isset($_POST['etatcivil']) ? test_input($_POST['etatcivil']) : '';
+	  $donneesgenea = isset($_POST['donneesgenea']) ? test_input($_POST['donneesgenea']) : '';
+	  $carriere = isset($_POST['carriere ']) ? test_input($_POST['carriere ']) : '';
+	  $decorations = isset($_POST['decorations']) ? test_input($_POST['decorations']) : '';
+      $sauvetage = isset($_POST['sauvetage']) ? test_input($_POST['sauvetage']) : '';
+      $msg = '';
+
+
+      if (count($_POST)==0) {
+         $controle = "utilisateur"; $action = "ajoutSauveteur";
+         require('./vue/layout.tpl');
+      }
+      else {
+         require('./modele/utilisateurBD.php');
+
+         if (!verif_inscr_input($nom, $pseudo, $email, $mdp, $mdp_c) || 
+             !verif_inscr_BD_valide_email($email) || 
+             !verif_inscr_BD_valide_pseudo($pseudo)) {
+            $msg = 'Erreur de saisie, Reéssayez !';
+            $controle = "utilisateur"; $action = "inscr";
+            require('./vue/layout.tpl');
+         }
+         else {
+            
+            // inscription réussit, authentification automatique.
+            if (verif_ident_client_BD($email, $mdp_c, $Profil)) {
+               // die("OK tous c'est bien passé.");
+               $_SESSION['profil'] = $Profil;
+               $url = './index.php?controle=utilisateur&action=accueil';
+               header('Location:' . $url);
+            }
+            // inscription échoué : non implémenté
+            die("Quelque chos n'a pas fonctionnée.");
+         }
+      }
 	}
 	
 	function listeDemandes()

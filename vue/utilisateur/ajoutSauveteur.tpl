@@ -24,24 +24,24 @@
                         <input type="text" name="prenom" value="<?php echo $prenom; ?>" placeholder="Prenom" class="login__input">
                     </div>
                     <div class="login__box">
-                        <i class="bx bx-at login__icon"></i>
+       
                         <input type="email" name="etatcivil" value="<?php echo $etatcivil; ?>" placeholder="Etat-civil" class="login__input">
                     </div>
                     <div class="login__box">
-                        <i class="bx bxs-lock login__icon"></i>
-                        <input type="password" name="donneegenea" value="<?php echo $donneesgenea; ?>" placeholder="Données généalogiques" class="login__input" id="password">
-                        <i class='bx bxs-show login__togglePassword' id="toggle-password"></i>
+                       
+                        <input type="password" name="donneegenea" value="<?php echo $donneesgenea; ?>" placeholder="Données généalogiques" class="login__input">
+                       
                     </div>
                     <div class="login__box">
-                        <i class='bx bxs-business login__icon' ></i>
-                        <input type="text" name="carriere" value="<?php echo $carrière; ?>" placeholder="Carrière" class="login__input">
+                        
+                        <input type="text" name="carriere" value="<?php echo $carriere; ?>" placeholder="Carrière" class="login__input">
                     </div>
                     <div class="login__box">
-                        <i class='bx bxs-business login__icon' ></i>
+                       
                         <input type="text" name="decorations" value="<?php echo $decorations; ?>" placeholder="Décorations" class="login__input">
                     </div>
 					<div class="login__box">
-                        <i class='bx bxs-business login__icon' ></i>
+                        
                         <input type="text" name="sauvetage" value="<?php echo $sauvetage; ?>" placeholder="Sauvetage" class="login__input">
                     </div>
                     <!-- SIGN IN -->
