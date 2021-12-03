@@ -28,12 +28,7 @@
 		
 
                 }else{
-                    if ($_SESSION['profil']['role'] == 'user') {
-                        echo'
-                        <li class="nav__item">
-                            <a href="./index.php?controle=vehicule&action=get" class="nav__link">Voitures</a>
-                        </li>';
-                    }
+              
                     if ($_SESSION['profil']['role'] == 'admin') {
                         echo'
                         <li class="nav__item">
