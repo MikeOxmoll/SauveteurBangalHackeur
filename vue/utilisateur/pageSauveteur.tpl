@@ -1,6 +1,6 @@
 <section class="contenuePage">
     <div class="entete">
-      <h1>Nom Prenom</h1>
+      <h1>Benjamin Morel</h1>
       
     </div>
     <div class="categorie">
