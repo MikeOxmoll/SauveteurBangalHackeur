@@ -1,11 +1,11 @@
 <?php 
 
     // vérifie si le client est présent dans la base de donnée.
-    function verif_ident_client_BD($ident, $mdp, &$Profil) 
+    function verif_ident_user_BD($ident, $mdp, &$Profil) 
     {
         require('./modele/connectBD.php');
         try {
-            $sql = "SELECT * FROM `client` WHERE pseudo=:ident AND mdp=:mdp OR email=:ident AND mdp=:mdp";
+            $sql = "SELECT * FROM `utilisateur` WHERE pseudo=:ident AND mdp=:mdp OR email=:ident AND mdp=:mdp";
             $commande = $pdo->prepare($sql);
             $commande->bindParam(':ident', $ident);
             $commande->bindParam(':mdp', $mdp);
@@ -13,7 +13,7 @@
     
             if ($bool) {
                 $Resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
-                if (count($Resultat) != 0) $Resultat[0]['role'] = 'client';
+                if (count($Resultat) != 0) $Resultat[0]['role'] = 'user';
                 // var_dump($Resultat); die();
             }
         }
@@ -32,11 +32,11 @@
     }
 
     // vérifie si le loueur est présent dans la base de donnée.
-    function verif_ident_loueur_BD($ident, $mdp, &$Profil)  
+    function verif_ident_admin_BD($ident, $mdp, &$Profil)  
     {
         require('./modele/connectBD.php');
         try {
-            $sql = "SELECT * FROM `loueur` WHERE pseudo=:ident AND mdp=:mdp OR email=:ident AND mdp=:mdp";
+            $sql = "SELECT * FROM `admin` WHERE pseudo=:ident AND mdp=:mdp OR email=:ident AND mdp=:mdp";
             $commande = $pdo->prepare($sql);
             $commande->bindParam(':ident', $ident);
             $commande->bindParam(':mdp', $mdp);
@@ -45,7 +45,7 @@
             if ($bool) {
                 $Resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
                 if (count($Resultat) != 0)
-                    $Resultat[0]['role'] = 'loueur';
+                    $Resultat[0]['role'] = 'admin';
                 // var_dump($Resultat); die();
             }
         }
@@ -68,7 +68,7 @@
     function inscr_BD($nom, $pseudo, $email, $mdp)
     {
         require('./modele/connectBD.php');
-        $sql = "INSERT INTO `client` (nom, pseudo, email, mdp)
+        $sql = "INSERT INTO `utilisateur` (nom, pseudo, email, mdp)
                  VALUES (:nom, :pseudo, :email, :mdp)";
         try {
             $commande = $pdo->prepare($sql);
@@ -93,7 +93,7 @@
     {
         require('./modele/connectBD.php');
         try {
-            $sql = "SELECT * FROM `client` WHERE email=:email";
+            $sql = "SELECT * FROM `utilisateur` WHERE email=:email";
             $commande = $pdo->prepare($sql);
             $commande->bindParam(':email', $email);
             $bool = $commande->execute();
@@ -117,7 +117,7 @@
     {
         require('./modele/connectBD.php');
         try {
-            $sql = "SELECT * FROM `client` WHERE pseudo=:pseudo";
+            $sql = "SELECT * FROM `utilisateur` WHERE pseudo=:pseudo";
             $commande = $pdo->prepare($sql);
             $commande->bindParam(':pseudo', $pseudo);
             $bool = $commande->execute();
